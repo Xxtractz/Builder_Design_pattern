@@ -8,5 +8,6 @@ public class Main {
                 .address("")
                 .phoneNumber("")
                 .build();
+        System.out.println(Musa);
     }
 }

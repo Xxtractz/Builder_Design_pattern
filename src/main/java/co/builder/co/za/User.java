@@ -16,6 +16,14 @@ public class User
         this.address = builder.address;
     }
 
+    @Override
+    public String toString() {
+        return "Name: " + this.firstName + " " + this.lastName + "\n"
+                + "Age: " + this.age + "\n"
+                + "Phone: " + this.phoneNumber + "\n"
+                + "Address: " + this.address ;
+    }
+
     public static class UserBuilder{
         private final String firstName;
         private final String lastName;
