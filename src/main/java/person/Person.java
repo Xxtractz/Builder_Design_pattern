@@ -67,32 +67,30 @@ public interface Person {
         public void setAddress(String address) {
             this.address = address;
         }
+    }
+    //inner Class
+    class Builder extends DefaultPerson{
+        public Builder(String firstName, String lastname) {
+            super(firstName, lastname);
+        }
 
-        //inner Class
-        class Builder extends DefaultPerson{
-            public Builder(String firstName, String lastname) {
-                super(firstName, lastname);
-            }
+        public Builder phone(String phone){
+            this.phoneNumber = phone;
+            return this;
+        }
 
-            public Builder phone(String phone){
-                this.phoneNumber = phone;
-                return this;
-            }
+        public Builder address(String address){
+            this.address = address;
+            return this;
+        }
 
-            public Builder address(String address){
-                this.address = address;
-                return this;
-            }
+        public Builder age(int age){
+            this.age = age;
+            return this;
+        }
 
-            public Builder age(int age){
-                this.age = age;
-                return this;
-            }
-
-            public Person build(){
-                return new DefaultPerson(this);
-            }
+        public Person build(){
+            return new DefaultPerson(this);
         }
     }
-
 }
