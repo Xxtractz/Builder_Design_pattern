@@ -1,14 +1,13 @@
-package co.builder.co.za;
+package person;
 
-public class User
-{
+public class User {
     private final String firstName;
     private final String lastName;
+    private final int age;
     private final String phoneNumber;
     private final String address;
-    private final int age;
 
-    public User(UserBuilder builder){
+    public User(UserBuilder builder) {
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
         this.age = builder.age;
@@ -18,40 +17,41 @@ public class User
 
     @Override
     public String toString() {
-        return "Name: " + this.firstName + " " + this.lastName + "\n"
-                + "Age: " + this.age + "\n"
-                + "Phone: " + this.phoneNumber + "\n"
-                + "Address: " + this.address ;
+        return "Name: " + this.firstName + " " + this.lastName + "\n" +
+                "Age: " + this.age +
+                " Phone: " + this.phoneNumber +
+                " Address: " + this.address;
+
     }
 
-    public static class UserBuilder{
+    public static class UserBuilder {
         private final String firstName;
         private final String lastName;
-        private String phoneNumber;
-        private String address;
-        private int age;
+        private  int age;
+        private  String phoneNumber;
+        private  String address;
 
         public UserBuilder(String firstName, String lastName) {
             this.firstName = firstName;
             this.lastName = lastName;
         }
 
-        public UserBuilder age(int age){
+        public UserBuilder age(int age) {
             this.age = age;
             return this;
         }
 
-        public UserBuilder phoneNumber(String phoneNumber){
+        public UserBuilder phoneNumber(String phoneNumber) {
             this.phoneNumber = phoneNumber;
             return this;
         }
 
-        public UserBuilder address(String address){
+        public UserBuilder address(String address) {
             this.address = address;
             return this;
         }
 
-        public User build(){
+        public User build() {
             return new User(this);
         }
     }

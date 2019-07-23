@@ -2,33 +2,38 @@ package person;
 
 public interface Person {
     String getFirstName();
+
     String getLastName();
+
     String getPhoneNumber();
+
     int getAge();
+
     String getAddress();
+
 
     class DefaultPerson implements Person {
 
-        //Require Params
+        // Required parameters
         private final String firstName;
-        private final String lastname;
+        private final String lastName;
 
-        //Optional Params
+        // Optional parameters
         protected String phoneNumber;
-        protected int age;
         protected String address;
+        protected int age;
 
-        public DefaultPerson(String firstName, String lastname) {
+        public DefaultPerson(String firstName, String lastName) {
             this.firstName = firstName;
-            this.lastname = lastname;
+            this.lastName = lastName;
         }
 
         protected DefaultPerson(Builder builder) {
-
             this(builder.getFirstName(), builder.getLastName());
+
             this.phoneNumber = phoneNumber;
-            this.age = age;
             this.address = address;
+            this.age = age;
         }
 
         @Override
@@ -38,7 +43,7 @@ public interface Person {
 
         @Override
         public String getLastName() {
-            return this.lastname;
+            return this.lastName;
         }
 
         @Override
@@ -46,17 +51,9 @@ public interface Person {
             return this.phoneNumber;
         }
 
-        public void setPhoneNumber(String phoneNumber) {
-            this.phoneNumber = phoneNumber;
-        }
-
         @Override
         public int getAge() {
             return this.age;
-        }
-
-        public void setAge(int age) {
-            this.age = age;
         }
 
         @Override
@@ -64,33 +61,43 @@ public interface Person {
             return this.address;
         }
 
-        public void setAddress(String address) {
-            this.address = address;
+        @Override
+        public String toString() {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("Name: " + this.firstName +
+                    " " + this.lastName);
+            stringBuilder.append("Phone: " + this.phoneNumber);
+            stringBuilder.append("Age: " + this.age);
+            stringBuilder.append("Address: " + this.address);
+
+            return stringBuilder.toString();
         }
     }
-    //inner Class
-    class Builder extends DefaultPerson{
-        public Builder(String firstName, String lastname) {
-            super(firstName, lastname);
+
+    class Builder extends DefaultPerson {
+        public Builder(String firstName, String lastName) {
+            super(firstName, lastName);
         }
 
-        public Builder phone(String phone){
+        public Builder phone(String phone) {
             this.phoneNumber = phone;
             return this;
         }
 
-        public Builder address(String address){
+        public Builder address(String address) {
             this.address = address;
             return this;
         }
 
-        public Builder age(int age){
+        public Builder age(int age) {
             this.age = age;
             return this;
         }
 
-        public Person build(){
+        public Person build() {
             return new DefaultPerson(this);
         }
     }
+
+
 }
