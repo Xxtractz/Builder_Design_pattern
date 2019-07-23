@@ -16,7 +16,9 @@ public class DefaultPerson implements Person {
         this.lastname = lastname;
     }
 
-    public DefaultPerson(String phoneNumber, int age, String address) {
+    protected DefaultPerson(Builder builder) {
+
+        this(builder.getFirstName(), builder.getFirstName());
         this.phoneNumber = phoneNumber;
         this.age = age;
         this.address = address;
@@ -64,5 +66,23 @@ public class DefaultPerson implements Person {
             super(firstName, lastname);
         }
 
+        public Builder phone(String phone){
+            this.phoneNumber = phone;
+            return this;
+        }
+
+        public Builder address(String address){
+            this.address = address;
+            return this;
+        }
+
+        public Builder age(int age){
+            this.age = age;
+            return this;
+        }
+
+        public Person build(){
+            return new DefaultPerson(this);
+        }
     }
 }
