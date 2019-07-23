@@ -24,16 +24,16 @@ public class DefaultPerson implements Person {
 
     @Override
     public String getFirstName() {
-        return firstName;
+        return this.firstName;
     }
 
     public String getLastname() {
-        return lastname;
+        return this.lastname;
     }
 
     @Override
     public String getPhoneNumber() {
-        return phoneNumber;
+        return this.phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
@@ -42,7 +42,7 @@ public class DefaultPerson implements Person {
 
     @Override
     public int getAge() {
-        return age;
+        return this.age;
     }
 
     public void setAge(int age) {
@@ -51,10 +51,18 @@ public class DefaultPerson implements Person {
 
     @Override
     public String getAddress() {
-        return address;
+        return this.address;
     }
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    //inner Class
+    class Builder extends DefaultPerson{
+        public Builder(String firstName, String lastname) {
+            super(firstName, lastname);
+        }
+
     }
 }
