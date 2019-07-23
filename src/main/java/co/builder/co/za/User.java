@@ -46,7 +46,7 @@ public class User
             return this;
         }
 
-        public UserBuilder address(String address{
+        public UserBuilder address(String address){
             this.address = address;
             return this;
         }
